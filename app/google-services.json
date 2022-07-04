@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "2579575489",
+    "project_id": "ornekproje1-8cb0d",
+    "storage_bucket": "ornekproje1-8cb0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2579575489:android:7f7efeb3b8a83fc3fb9a40",
+        "android_client_info": {
+          "package_name": "com.sametsisman.ornekproje1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2579575489-600hvaohur6pmsufgttse67r0ami1qeo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWesQ2kw-lD0bMefkCz2xpH7N_2RwAaCw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2579575489-600hvaohur6pmsufgttse67r0ami1qeo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
