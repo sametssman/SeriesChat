@@ -24,14 +24,14 @@
             app:cardCornerRadius="16dp">
 
             <ImageView
-                android:id="@+id/row_image"
+                android:id="@+id/search_row_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </androidx.cardview.widget.CardView>
 
 
         <TextView
-            android:id="@+id/row_title"
+            android:id="@+id/search_row_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -51,7 +51,7 @@
                 android:src="@drawable/ic_star" />
 
             <TextView
-                android:id="@+id/row_score"
+                android:id="@+id/search_row_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"

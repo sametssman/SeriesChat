@@ -9,10 +9,9 @@ import com.bumptech.glide.Glide
 import com.sametsisman.ornekproje1.R
 import com.sametsisman.ornekproje1.view.feed.DetailActivity
 import com.sametsisman.ornekproje1.view.model.Result
-import kotlinx.android.synthetic.main.recyclerview_row.view.*
+import kotlinx.android.synthetic.main.search_row.view.*
 
-class MovieAdapter () : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
-
+class SearchAdapter () : RecyclerView.Adapter<SearchAdapter.MovieHolder>() {
     var movieList : ArrayList<Result> = ArrayList()
     val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342"
 
@@ -20,19 +19,19 @@ class MovieAdapter () : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.recyclerview_row,parent,false)
+        val view = layoutInflater.inflate(R.layout.search_row,parent,false)
         return MovieHolder(view)
     }
 
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
-        holder.view.row_title.text = movieList[position].name
-        holder.view.row_score.text = movieList[position].rating.toString()
+        holder.view.search_row_title.text = movieList[position].name
+        holder.view.search_row_score.text = movieList[position].rating.toString()
 
         val moviePosterUrl = POSTER_BASE_URL + movieList[position].posterPath
         Glide.with(holder.itemView.context)
             .load(moviePosterUrl)
             .centerCrop()
-            .into(holder.itemView.row_image)
+            .into(holder.itemView.search_row_image)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.view.context, DetailActivity::class.java)
@@ -48,6 +47,4 @@ class MovieAdapter () : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
     fun setList(arraylist : List<Result>){
         movieList.addAll(arraylist)
     }
-
-
 }

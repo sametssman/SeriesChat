@@ -1,21 +1,27 @@
 package com.sametsisman.ornekproje1.view.feed
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sametsisman.ornekproje1.R
 import com.sametsisman.ornekproje1.view.adapter.MovieAdapter
 import com.sametsisman.ornekproje1.view.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.*
+
 
 class HomeFragment : Fragment() {
     private lateinit var viewModel : HomeViewModel
-    private val movieAdapter = MovieAdapter(arrayListOf())
+    private val movieAdapter = MovieAdapter()
+    private var currentPage = 1
+    private var totalPages = 1
+    private var first = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,32 +38,71 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        viewModel.refreshData()
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = movieAdapter
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+
+        fetchPopularMovies()
+
+        initRecyclerview()
+
+        observeLiveData()
+
+        first = false
 
         swipeRefreshLayout.setOnRefreshListener {
-            recyclerView.visibility = View.GONE
+            home_ui.visibility = View.GONE
             errorText.visibility = View.GONE
             movieLoading.visibility = View.INVISIBLE
-            viewModel.refreshFromAPI()
+            fetchPopularMovies()
 
             swipeRefreshLayout.isRefreshing = false
         }
 
-        observeLiveData()
+    }
+
+    private fun initRecyclerview() {
+        recyclerview_popular.layoutManager = GridLayoutManager(context,2)
+        recyclerview_popular.adapter = movieAdapter
+
+        recyclerview_popular.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val visibleItemCount = (recyclerview_popular.layoutManager as GridLayoutManager).childCount
+                val pastVisibleItem = (recyclerview_popular.layoutManager as GridLayoutManager).findFirstCompletelyVisibleItemPosition()
+                val total = movieAdapter.itemCount
+                if (visibleItemCount + pastVisibleItem >= total){
+                    currentPage++
+                    fetchPopularMovies()
+                }
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+    }
+
+    private fun fetchPopularMovies() {
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val job1 : Deferred<Unit> = async {
+                viewModel.getDataFromAPI(currentPage.toString(),first)
+            }
+
+            job1.await()
+        }
     }
 
     private fun observeLiveData() {
-        viewModel.movies.observe(viewLifecycleOwner, Observer {movies ->
-
-            movies?.let {
-                recyclerView.visibility = View.VISIBLE
-                movieAdapter.updateMovieList(movies)
+        viewModel.movies.observe(viewLifecycleOwner, androidx.lifecycle.Observer{
+            it.let {
+                val oldCount = movieAdapter.itemCount
+                movieAdapter.setList(it.results)
+                movieAdapter.notifyItemRangeInserted(oldCount,movieAdapter.itemCount)
+                home_ui.visibility = View.VISIBLE
             }
+        })
 
+        viewModel.totalPages.observe(viewLifecycleOwner, androidx.lifecycle.Observer{
+            it.let {
+                totalPages = it
+            }
         })
 
         viewModel.movieError.observe(viewLifecycleOwner, Observer { error->
@@ -74,7 +119,7 @@ class HomeFragment : Fragment() {
             loading?.let {
                 if (it) {
                     movieLoading.visibility = View.VISIBLE
-                    recyclerView.visibility = View.GONE
+                    home_ui.visibility = View.GONE
                     errorText.visibility = View.GONE
                 } else {
                     movieLoading.visibility = View.GONE

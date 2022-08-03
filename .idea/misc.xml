@@ -16,6 +16,26 @@
         <entry key="..\:/Users/Samet/AndroidStudioProjects/OrnekProje1/app/src/main/res/layout/recyclerview_row.xml" value="0.25" />
         <entry key="..\:/Users/Samet/AndroidStudioProjects/OrnekProje1/app/src/main/res/menu/bottom_nav_view.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Samet/AndroidStudioProjects/OrnekProje1/app/src/main/res/menu/menu.xml" value="0.27291666666666664" />
+        <entry key="app/src/main/res/drawable/bg_chat_input.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_feed.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.1286231884057971" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.35013797041298683" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/item_message.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/recyclerview_row.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/search_row.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/top_rated_row.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/user_list_row.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/menu/bottom_nav_view.xml" value="0.23802083333333332" />
+        <entry key="app/src/main/res/menu/menu.xml" value="0.23802083333333332" />
       </map>
     </option>
   </component>

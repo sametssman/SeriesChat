@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sametsisman.ornekproje1">
+    package="com.sametsisman.ornekproje1" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,7 +10,16 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.OrnekProje1">
+        android:theme="@style/Theme.OrnekProje1" >
+        <activity
+            android:name=".view.kayitgiris.MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.feed.DetailActivity"
             android:exported="false" />
@@ -18,16 +27,14 @@
             android:name=".view.feed.FeedActivity"
             android:exported="false" />
         <activity
+            android:name=".view.feed.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.kayitgiris.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".view.kayitgiris.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".view.kayitgiris.SignInActivity"
+            android:exported="false" >
         </activity>
 
         <meta-data
@@ -43,7 +50,7 @@
             android:label="@string/app_name" />
         <activity
             android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -53,6 +60,14 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".view.service.MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

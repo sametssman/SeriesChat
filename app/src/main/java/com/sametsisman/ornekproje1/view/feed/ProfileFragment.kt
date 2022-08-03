@@ -1,26 +1,20 @@
 package com.sametsisman.ornekproje1.view.feed
 
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.ImageDecoder
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.sametsisman.ornekproje1.R
 import com.sametsisman.ornekproje1.view.kayitgiris.MainActivity
-import com.sametsisman.ornekproje1.view.model.Movie
+import com.sametsisman.ornekproje1.view.kayitgiris.SignInActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 
 class ProfileFragment : Fragment() {
    // private val movieAdapter = MovieAdapter(movieArrayList)
-    private lateinit var movieArrayList : ArrayList<Movie>
     private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +38,13 @@ class ProfileFragment : Fragment() {
         //recyclerview.adapter = movieAdapter
 
         auth = Firebase.auth
+
+        button2.setOnClickListener {
+            auth.signOut()
+            val intent = Intent(this.context,SignInActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+        }
     }
 
 
@@ -55,7 +56,7 @@ class ProfileFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.cikis){
             auth.signOut()
-            val intent = Intent(this.context, MainActivity::class.java)
+            val intent = Intent(this.context, SignInActivity::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }

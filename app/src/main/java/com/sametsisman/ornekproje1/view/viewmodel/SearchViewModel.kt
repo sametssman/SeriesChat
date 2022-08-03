@@ -1,54 +1,50 @@
 package com.sametsisman.ornekproje1.view.viewmodel
 
-import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.sametsisman.ornekproje1.view.model.Moviex
 import com.sametsisman.ornekproje1.view.service.MovieAPIService
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class HomeViewModel(application: Application) : BaseViewModel(application) {
+class SearchViewModel : ViewModel() {
     private val apiService = MovieAPIService()
     private val compositeDisposable = CompositeDisposable()
 
-    val movies = MutableLiveData<Moviex>()
+    val searchMovies = MutableLiveData<Moviex>()
     val totalPages = MutableLiveData<Int>()
     val movieError = MutableLiveData<Boolean>()
     val movieLoading = MutableLiveData<Boolean>()
 
-    fun getDataFromAPI(page: String,first : Boolean){
+    fun searchMovieFromApi(query : String , page : String){
 
-        if (first){
-            movieLoading.postValue(true)
-        }
+        movieLoading.postValue(true)
 
         try {
             compositeDisposable.add(
-                apiService.getPopularMovies(page)
+                apiService.searchMovie(query, page)
                     .subscribeOn(Schedulers.io())
                     .subscribe(
                         {
-                            movies.postValue(it)
+                            searchMovies.postValue(it)
                             totalPages.postValue(it.total_pages)
                             movieLoading.postValue(false)
                             movieError.postValue(false)
                         },
                         {
-                            Log.e("MovieDetailsDataSource",it.message!!)
+                            Log.e("SearchViewModel",it.message!!)
                             movieLoading.postValue(false)
                             movieError.postValue(true)
                         }
                     )
             )
         }catch (e: Exception){
-            Log.e("MovieDetailsDataSource",e.message!!)
+            Log.e("SearchViewModel",e.message!!)
             movieLoading.postValue(false)
             movieError.postValue(true)
         }
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

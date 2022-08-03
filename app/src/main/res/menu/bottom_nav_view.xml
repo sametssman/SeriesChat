@@ -2,9 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
-        android:title="Home"
-        android:icon="@drawable/iiiiii"
+    android:id="@+id/home"
+    android:title="Home"
+    android:icon="@drawable/iiiiii"
+    ></item>
+
+    <item
+        android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
+        ></item>
+
+    <item
+        android:id="@+id/messagee"
+        android:title="Message"
+        android:icon="@drawable/ic_messagee"
         ></item>
 
     <item

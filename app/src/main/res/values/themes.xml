@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.OrnekProje1" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.OrnekProje1" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/bgcolor</item>
         <item name="colorPrimaryVariant">@color/bgcolor</item>

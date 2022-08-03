@@ -16,7 +16,7 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_main)
 
         auth = Firebase.auth
     }
@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
 
         } else {
             auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, SignInActivity::class.java)
                 Toast.makeText(applicationContext, "Registration Successful.", Toast.LENGTH_LONG).show()
                 startActivity(intent)
                 finish()
