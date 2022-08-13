@@ -27,6 +27,10 @@ class FeedActivity : AppCompatActivity() {
         messageFragment = MessageFragment()
         searchFragment = SearchFragment()
         fragmentAyarla(homeFragment)
+        if (intent.getIntExtra("fromDetail",0) == 1){
+            bottomView.selectedItemId = R.id.messagee
+            fragmentAyarla(messageFragment)
+        }
 
         bottomView.setOnItemSelectedListener(NavigationBarView.OnItemSelectedListener { item ->
             if (item.itemId == R.id.home) {
@@ -38,7 +42,7 @@ class FeedActivity : AppCompatActivity() {
             } else if (item.itemId == R.id.messagee){
                 fragmentAyarla(messageFragment)
             }
-            false
+            true
         })
 
     }

@@ -23,6 +23,7 @@ class ChatAdapter(val chatMessage: List<ChatMessage>, val senderId: String) : Re
         fun setData(chatMessage: ChatMessage){
             binding.textReceivedMessage.text = chatMessage.message
             binding.textReceivedDateTime.text = chatMessage.dateTime
+            binding.textReceivedUsername.text = chatMessage.username
         }
     }
 

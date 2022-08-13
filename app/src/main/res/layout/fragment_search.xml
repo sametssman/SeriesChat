@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".view.feed.SearchFragment">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/searchScrollUpButton"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/ic_up"
+        app:iconSize="37dp"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded" />
+
     <TextView
         android:id="@+id/searchErrorText"
         android:layout_width="wrap_content"
@@ -63,7 +81,7 @@
             android:layout_height="30dp"
             android:padding="2dp"
             android:layout_marginEnd="5dp"
-            android:src="@drawable/ic_search"/>
+            android:src="@drawable/ic_black_search"/>
 
     </LinearLayout>
 

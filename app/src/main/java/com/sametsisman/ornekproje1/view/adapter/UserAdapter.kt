@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sametsisman.ornekproje1.R
 import com.sametsisman.ornekproje1.view.feed.ChatActivity
 import com.sametsisman.ornekproje1.view.model.Room
+import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.user_list_row.view.*
 import java.io.Serializable
 
@@ -24,7 +26,11 @@ class UserAdapter() : RecyclerView.Adapter<UserAdapter.UserHolder>() {
     }
 
     override fun onBindViewHolder(holder: UserHolder, position: Int) {
-        holder.view.userEmailTxt.text = roomList[position].roomName
+        holder.view.roomNameTxt.text = roomList[position].roomName
+
+        Glide.with(holder.view)
+            .load(roomList[position].roomImageUrl)
+            .into(holder.view.roomImageView)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.view.context, ChatActivity::class.java)

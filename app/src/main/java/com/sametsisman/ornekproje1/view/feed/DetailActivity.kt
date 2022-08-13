@@ -1,5 +1,6 @@
 package com.sametsisman.ornekproje1.view.feed
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +13,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firestore.v1.StructuredQuery
 import com.sametsisman.ornekproje1.R
 import com.sametsisman.ornekproje1.view.model.MovieDetails
+import com.sametsisman.ornekproje1.view.model.Room
 import com.sametsisman.ornekproje1.view.viewmodel.DetailActivityViewModel
 import kotlinx.android.synthetic.main.activity_chat.*
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -21,29 +23,49 @@ import java.util.*
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var viewModel : DetailActivityViewModel
-    private val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342"
+    private val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w500"
     private lateinit var firestore: FirebaseFirestore
     private lateinit var choosenSerie : MovieDetails
     private lateinit var senderId : String
-    private lateinit var senderDocumentId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
         val movieId = intent.getIntExtra("id",1)
+
         viewModel = ViewModelProviders.of(this).get(DetailActivityViewModel::class.java)
+
         viewModel.getDataFromAPI(movieId)
+
         senderId = getSharedPreferences("preferences", MODE_PRIVATE).getString("senderId","")!!
-        senderDocumentId = getSharedPreferences("preferences", MODE_PRIVATE).getString("senderDocumentId","")!!
+
         firestore = Firebase.firestore
+
+        observeLiveData()
+
         joinRoomButton.setOnClickListener {
             val roomName = hashMapOf<String,Any>()
             roomName.put("roomName",choosenSerie.title)
+            roomName.put("roomImageUrl",POSTER_BASE_URL + choosenSerie.posterPath)
             firestore.collection("rooms").document(choosenSerie.id.toString()).set(roomName)
-            firestore.collection("usersss").document(senderDocumentId).collection("registeredRooms").document(choosenSerie.id.toString()).set(roomName)
+            firestore.collection("usersss").document(senderId).collection("registeredRooms").document(choosenSerie.id.toString()).set(roomName)
+            joinRoomButton.visibility = View.GONE
+            leaveRoomButton.visibility = View.VISIBLE
+            val intent = Intent(this,FeedActivity::class.java)
+            intent.putExtra("fromDetail",1)
+            startActivity(intent)
         }
 
-        observeLiveData()
+        leaveRoomButton.setOnClickListener {
+            firestore.collection("usersss").document(senderId).collection("registeredRooms").document(choosenSerie.id.toString())
+                .delete()
+                .addOnSuccessListener {
+                    leaveRoomButton.visibility = View.GONE
+                    joinRoomButton.visibility = View.VISIBLE
+                }
+        }
+
     }
 
     private fun observeLiveData() {
@@ -52,6 +74,7 @@ class DetailActivity : AppCompatActivity() {
             movieDetail?.let {
                 bindUi(it)
                 choosenSerie = it
+                setJoinOrLeaveButton()
                 detail_ui.visibility = View.VISIBLE
             }
 
@@ -86,7 +109,6 @@ class DetailActivity : AppCompatActivity() {
         budgetText.text = it.budget.toString()
         ratingText.text = it.rating.toString()
         releaseDateText.text = it.releaseDate
-        runtimeText.text = " minutes"
         revenueText.text = it.revenue.toString()
         overviewText.text = it.overview
 
@@ -94,5 +116,23 @@ class DetailActivity : AppCompatActivity() {
         Glide.with(this)
             .load(moviePosterUrl)
             .into(imageMovie)
+    }
+
+    private fun setJoinOrLeaveButton(){
+        firestore.collection("usersss").document(senderId).collection("registeredRooms").document(choosenSerie.id.toString())
+            .get()
+            .addOnSuccessListener {it1 ->
+                if (it1.getString("roomName") != null){
+                    joinRoomButton.visibility = View.GONE
+                    leaveRoomButton.visibility = View.VISIBLE
+                }else{
+                    joinRoomButton.visibility = View.VISIBLE
+                    leaveRoomButton.visibility = View.GONE
+                }
+
+            }.addOnFailureListener{
+                joinRoomButton.visibility = View.VISIBLE
+                leaveRoomButton.visibility = View.GONE
+            }
     }
 }

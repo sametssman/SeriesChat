@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -18,6 +19,7 @@ class MessageFragment : Fragment() {
     private lateinit var roomList : ArrayList<Room>
     private lateinit var firestore: FirebaseFirestore
     private val userAdapter = UserAdapter()
+    private lateinit var userId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,22 +39,25 @@ class MessageFragment : Fragment() {
 
         roomList = ArrayList()
         firestore = Firebase.firestore
+        userId = requireActivity().getSharedPreferences("preferences", AppCompatActivity.MODE_PRIVATE).getString("senderId","")!!
         getRooms()
         userListRecyclerView.layoutManager = LinearLayoutManager(context)
         userListRecyclerView.adapter = userAdapter
     }
 
     private fun getRooms() {
-        firestore.collection("rooms")
+        firestore.collection("usersss").document(userId).collection("registeredRooms")
             .get()
             .addOnSuccessListener {
                 val documents = it.documents
                 for (document in documents){
                     val roomName = document.getString("roomName")!!
+                    val roomImageUrl = document.getString("roomImageUrl")!!
                     val id = document.id
-                    val room = Room(roomName,id)
+                    val room = Room(roomName,roomImageUrl,id)
                     roomList.add(room)
-                    userAdapter.setList(roomList)
+                    val sortedList = ArrayList(roomList.sortedBy { it.roomName })
+                    userAdapter.setList(sortedList)
                 }
             }
     }

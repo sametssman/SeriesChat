@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
+    android:background="@color/bgcolor"
     tools:context=".view.feed.ChatActivity">
 
     <View
@@ -31,7 +31,7 @@
         android:padding="@dimen/_20sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/inputMessage"
-        app:layout_constraintTop_toBottomOf="@+id/receiverNameText" />
+        app:layout_constraintTop_toBottomOf="@+id/titleLinear" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -74,17 +74,42 @@
         android:layout_marginBottom="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/receiverNameText"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/titleLinear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="599dp"
-        android:text="Chat App"
-        android:textColor="@color/primary_text"
-        android:textSize="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/chatImageView"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toStartOf="@+id/receiverNameText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/receiverNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chat App"
+            android:textAlignment="center"
+            android:textColor="@color/primary_text"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

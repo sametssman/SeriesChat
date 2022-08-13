@@ -1,42 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.kayitgiris.SignUpActivity">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bgcolor"
-        android:src="@drawable/bgbackground"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:id="@+id/imageView3"
+        android:layout_width="286dp"
+        android:layout_height="254dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textFieldUsername"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="63dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/yellow"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
         app:counterTextColor="@color/black"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textFieldUsernameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/yellow"
             android:gravity="top"
             android:hint="Username"
             android:inputType="text"
@@ -48,10 +50,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="63dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/yellow"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,8 +64,9 @@
             android:id="@+id/textFieldEmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/yellow"
             android:gravity="top"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             android:hint="Email"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -74,10 +76,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="63dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:background="@color/yellow"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,120 +90,20 @@
             android:id="@+id/textFieldPasswordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/yellow"
             android:gravity="top"
             android:hint="Password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/groupdort" />
-
-        <ImageView
-            android:id="@+id/imageView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="115dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pathbir" />
-
-        <ImageView
-            android:id="@+id/imageView31"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView1"
-            app:layout_constraintTop_toBottomOf="@+id/imageView21"
-            app:srcCompat="@drawable/pathdort" />
-
-        <ImageView
-            android:id="@+id/imageView41"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="88dp"
-            app:layout_constraintStart_toEndOf="@+id/imageView21"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/groupbes" />
-
-        <ImageView
-            android:id="@+id/imageView51"
-            android:layout_width="53dp"
-            android:layout_height="13dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="110dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView21"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pathuc" />
-
-        <ImageView
-            android:id="@+id/imageView61"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="33dp"
-            android:layout_marginTop="90dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView41"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/groupalti" />
-
-        <ImageView
-            android:id="@+id/imageView71"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="123dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView81"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pathiki" />
-
-        <ImageView
-            android:id="@+id/imageView81"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="165dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView41"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pathbes" />
-
-        <ImageView
-            android:id="@+id/imageView91"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="57dp"
-            android:layout_marginTop="253dp"
-            app:layout_constraintStart_toStartOf="@+id/imageView81"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/groupuc" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
+    <Button
         android:id="@+id/signUpButton"
-        android:layout_width="193dp"
-        android:layout_height="62dp"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_45sdp"
         android:layout_marginTop="30dp"
-        android:onClick="signUp"
-        android:src="@drawable/groupbir"
+        android:text="SIGN UP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textFieldPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -3,18 +3,21 @@
 
     <item
     android:id="@+id/home"
+        android:enabled="true"
     android:title="Home"
-    android:icon="@drawable/iiiiii"
+    android:icon="@drawable/ic_home"
     ></item>
 
     <item
         android:id="@+id/search"
+        android:enabled="true"
         android:title="Search"
         android:icon="@drawable/ic_search"
         ></item>
 
     <item
         android:id="@+id/messagee"
+        android:enabled="true"
         android:title="Message"
         android:icon="@drawable/ic_messagee"
         ></item>
@@ -22,6 +25,7 @@
     <item
         android:id="@+id/profile"
         android:title="Profile"
-        android:icon="@drawable/ii"
+        android:enabled="true"
+        android:icon="@drawable/ic_account"
         ></item>
 </menu>

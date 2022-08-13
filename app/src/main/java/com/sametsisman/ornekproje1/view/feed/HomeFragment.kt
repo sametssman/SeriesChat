@@ -53,9 +53,18 @@ class HomeFragment : Fragment() {
             home_ui.visibility = View.GONE
             errorText.visibility = View.GONE
             movieLoading.visibility = View.INVISIBLE
+            movieAdapter.movieList.clear()
+            movieAdapter.notifyDataSetChanged()
+            currentPage = 1
+            first = true
             fetchPopularMovies()
+            first = false
 
             swipeRefreshLayout.isRefreshing = false
+        }
+
+        scrollUpButton.setOnClickListener {
+            recyclerview_popular.layoutManager!!.scrollToPosition(0)
         }
 
     }
@@ -69,9 +78,17 @@ class HomeFragment : Fragment() {
                 val visibleItemCount = (recyclerview_popular.layoutManager as GridLayoutManager).childCount
                 val pastVisibleItem = (recyclerview_popular.layoutManager as GridLayoutManager).findFirstCompletelyVisibleItemPosition()
                 val total = movieAdapter.itemCount
+                if (visibleItemCount + pastVisibleItem > 20){
+                    scrollUpButton.visibility = View.VISIBLE
+                }else{
+                    scrollUpButton.visibility = View.GONE
+                }
                 if (visibleItemCount + pastVisibleItem >= total){
+                    val oldPage = currentPage
                     currentPage++
-                    fetchPopularMovies()
+                    if (currentPage - oldPage == 1){
+                        fetchPopularMovies()
+                    }
                 }
                 super.onScrolled(recyclerView, dx, dy)
             }

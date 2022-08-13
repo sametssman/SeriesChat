@@ -17,25 +17,40 @@
         <entry key="..\:/Users/Samet/AndroidStudioProjects/OrnekProje1/app/src/main/res/menu/bottom_nav_view.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Samet/AndroidStudioProjects/OrnekProje1/app/src/main/res/menu/menu.xml" value="0.27291666666666664" />
         <entry key="app/src/main/res/drawable/bg_chat_input.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.2269021739130435" />
-        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/drawable/bg_content_top.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/bg_detail.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/bg_message.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_account.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_baseline_keyboard_arrow_up_24.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16" />
+        <entry key="app/src/main/res/drawable/ic_messagee.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_up.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.28719940185546877" />
+        <entry key="app/src/main/res/layout/activity_connection.xml" value="0.1933448680932971" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_feed.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.1286231884057971" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.22127455559329703" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.13612565445026178" />
+        <entry key="app/src/main/res/layout/fragment_connection.xml" value="0.225" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.168212890625" />
         <entry key="app/src/main/res/layout/fragment_message.xml" value="0.2269021739130435" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.35013797041298683" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22181918379189308" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2269021739130435" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.2269021739130435" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.2269021739130435" />
         <entry key="app/src/main/res/layout/item_message.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/item_received_message.xml" value="0.2269021739130435" />
         <entry key="app/src/main/res/layout/recyclerview_row.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/search_row.xml" value="0.2269021739130435" />
         <entry key="app/src/main/res/layout/top_rated_row.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/user_list_row.xml" value="0.2269021739130435" />
+        <entry key="app/src/main/res/layout/user_list_row.xml" value="0.33798980712890636" />
         <entry key="app/src/main/res/menu/bottom_nav_view.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.23802083333333332" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_appicon.xml" value="0.16" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_appicon_round.xml" value="0.16" />
       </map>
     </option>
   </component>
@@ -44,5 +59,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.165" />
+      </ProjectState>
+    </option>
   </component>
 </project>
