@@ -79,7 +79,8 @@ class SignUpActivity : AppCompatActivity() {
                         auth.currentUser!!.sendEmailVerification()
                         Toast.makeText(
                             applicationContext,
-                            "Registration Successful. We have sent a verification link to your email.",
+                            "Registration Successful. We have sent a verification link to your email." +
+                                    "\n(Please check your spam box.)",
                             Toast.LENGTH_LONG
                         ).show()
                         val id = auth.currentUser!!.uid

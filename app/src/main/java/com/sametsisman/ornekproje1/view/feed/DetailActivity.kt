@@ -44,6 +44,11 @@ class DetailActivity : AppCompatActivity() {
 
         observeLiveData()
 
+        listenButton()
+
+    }
+
+    private fun listenButton(){
         joinRoomButton.setOnClickListener {
             val roomName = hashMapOf<String,Any>()
             roomName.put("roomName",choosenSerie.title)
@@ -65,7 +70,6 @@ class DetailActivity : AppCompatActivity() {
                     joinRoomButton.visibility = View.VISIBLE
                 }
         }
-
     }
 
     private fun observeLiveData() {

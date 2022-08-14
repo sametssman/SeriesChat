@@ -38,9 +38,13 @@ class MessageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         roomList = ArrayList()
+
         firestore = Firebase.firestore
+
         userId = requireActivity().getSharedPreferences("preferences", AppCompatActivity.MODE_PRIVATE).getString("senderId","")!!
+
         getRooms()
+
         userListRecyclerView.layoutManager = LinearLayoutManager(context)
         userListRecyclerView.adapter = userAdapter
     }

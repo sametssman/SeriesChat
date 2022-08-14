@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="155dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginStart="20dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="342px"
-            android:layout_height="513px"
-            android:layout_marginStart="15dp"
+            android:id="@+id/rowCardview"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_150sdp"
             android:elevation="0dp"
-            app:cardCornerRadius="16dp">
+            app:cardCornerRadius="16dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/row_image"
@@ -32,18 +34,24 @@
 
         <TextView
             android:id="@+id/row_title"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
+            android:scrollbars="vertical"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="5dp"
-            android:text="Spiderman" />
+            android:text="Spiderman"
+            app:layout_constraintTop_toBottomOf="@+id/rowCardview"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="1dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/row_title"
+            app:layout_constraintStart_toStartOf="parent"
+            >
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -57,5 +65,5 @@
                 android:layout_marginLeft="2dp"
                 android:text="4.5" />
         </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

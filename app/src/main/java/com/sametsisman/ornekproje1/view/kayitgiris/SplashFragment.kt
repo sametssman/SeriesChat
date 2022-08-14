@@ -26,6 +26,7 @@ class SplashFragment : Fragment() {
 
         val connectivityManager = requireContext().getSystemService(Context.CONNECTIVITY_SERVICE) as (ConnectivityManager)
         val networkInfo = connectivityManager.activeNetworkInfo
+
         if (networkInfo == null){
             findNavController().navigate(R.id.action_splashFragment_to_connectionFragment)
         }else{

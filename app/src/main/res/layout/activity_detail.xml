@@ -50,8 +50,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
-                android:layout_width="500px"
-                android:layout_height="750px"
+                android:layout_width="@dimen/_140sdp"
+                android:layout_height="@dimen/_210sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:elevation="0dp"
@@ -77,8 +77,8 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/_9ssp"
+                android:layout_height="@dimen/_37sdp"
+                android:textSize="@dimen/_8ssp"
                 android:layout_marginTop ="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
@@ -87,7 +87,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/cardView"
                 app:layout_constraintTop_toBottomOf="@+id/ratingLinear"
-                android:visibility="gone"
+                android:visibility="visible"
 
                 />
 
@@ -108,12 +108,14 @@
 
             <TextView
                 android:id="@+id/titleText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Spiderman"
                 android:textAlignment="center"
                 android:textColor="#333232"
                 android:textSize="@dimen/_20ssp"
+                android:layout_marginStart="@dimen/_45sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -263,12 +265,14 @@
 
             <TextView
                 android:id="@+id/taglineText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Spiderman"
                 android:textColor="#BDBDBD"
                 android:textAlignment="center"
                 android:textSize="@dimen/_15ssp"
+                android:layout_marginStart="@dimen/_45sdp"
+                android:layout_marginEnd="@dimen/_45sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleText" />

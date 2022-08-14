@@ -41,6 +41,10 @@ class ChatActivity : AppCompatActivity() {
             sendMessage()
         }
 
+        fetchChat()
+    }
+
+    private fun fetchChat(){
         firestore.collection("rooms").document(receiverRoom.id).collection("chat").addSnapshotListener { value, error ->
             if (error != null){
                 Log.d("SnapshotListenerError",error.message.toString())
@@ -74,7 +78,6 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
-
     private fun sendMessage(){
         val message = hashMapOf<String,Any>()
         message.put("senderId",senderId)
@@ -91,12 +94,15 @@ class ChatActivity : AppCompatActivity() {
         receiverRoom = intent.extras!!.get("receiverUser") as Room
         chatMessages = ArrayList()
         senderId = getSharedPreferences("preferences", MODE_PRIVATE).getString("senderId","")!!
+
         firestore.collection("usersss").document(senderId)
             .get()
             .addOnSuccessListener {
                 username = it.getString("username")!!
             }
+
         receiverNameText.text = receiverRoom.roomName
+
         Glide.with(this)
             .load(receiverRoom.roomImageUrl)
             .into(chatImageView)

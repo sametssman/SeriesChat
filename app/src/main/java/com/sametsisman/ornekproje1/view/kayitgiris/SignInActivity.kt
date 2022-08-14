@@ -124,6 +124,12 @@ class SignInActivity : AppCompatActivity() {
                         .setNeutralButton("Resend verification link",object : DialogInterface.OnClickListener{
                             override fun onClick(p0: DialogInterface?, p1: Int) {
                                 user.sendEmailVerification()
+                                Toast.makeText(
+                                    applicationContext,
+                                    "We have sent a verification link to your email." +
+                                            "\n(Please check your spam box.)",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
 
                         }).show()
