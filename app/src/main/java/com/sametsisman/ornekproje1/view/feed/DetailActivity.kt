@@ -68,6 +68,10 @@ class DetailActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     leaveRoomButton.visibility = View.GONE
                     joinRoomButton.visibility = View.VISIBLE
+                    val intent = Intent(this,FeedActivity::class.java)
+                    intent.putExtra("fromDetail",1)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                 }
         }
     }
